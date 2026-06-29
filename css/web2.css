@@ -71,6 +71,8 @@ body {
   max-width: 680px;
   margin-left: auto;
   margin-right: auto;
+  text-align: center;
+  text-justify: auto;
 }
 
 .journal-hero .hero-contact {
