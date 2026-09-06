@@ -316,6 +316,7 @@ img {
 .edu-school-name {
   font-size: 0.88rem;
   color: var(--color-text-light);
+  font-weight: 700;
 }
 
 .edu-badges {
