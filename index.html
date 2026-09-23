@@ -684,6 +684,66 @@
     }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
 
     fadeElements.forEach(el => observer.observe(el));
+    // ======================== Outreach Image Lightbox ========================
+
+const outreachImages = document.querySelectorAll(
+  '#outreach .activity-media img'
+);
+
+const imageLightbox = document.getElementById('imageLightbox');
+const imageLightboxImg = document.getElementById('imageLightboxImg');
+const imageLightboxClose = document.getElementById('imageLightboxClose');
+
+function openImageLightbox(img) {
+  imageLightboxImg.src = img.currentSrc || img.src;
+  imageLightboxImg.alt = img.alt || 'Expanded outreach image';
+
+  imageLightbox.showModal();
+  document.body.classList.add('lightbox-open');
+}
+
+outreachImages.forEach(img => {
+  img.setAttribute('tabindex', '0');
+  img.setAttribute('role', 'button');
+  img.setAttribute(
+    'aria-label',
+    `${img.alt || 'Outreach image'} — click to enlarge`
+  );
+
+  img.addEventListener('click', () => {
+    openImageLightbox(img);
+  });
+
+  img.addEventListener('keydown', event => {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      openImageLightbox(img);
+    }
+  });
+});
+
+imageLightboxClose.addEventListener('click', () => {
+  imageLightbox.close();
+});
+
+imageLightbox.addEventListener('click', event => {
+  const rect = imageLightbox.getBoundingClientRect();
+
+  const clickedInsideDialog =
+    event.clientX >= rect.left &&
+    event.clientX <= rect.right &&
+    event.clientY >= rect.top &&
+    event.clientY <= rect.bottom;
+
+  if (!clickedInsideDialog) {
+    imageLightbox.close();
+  }
+});
+
+imageLightbox.addEventListener('close', () => {
+  document.body.classList.remove('lightbox-open');
+  imageLightboxImg.src = '';
+});
   </script>
 
 </body>
