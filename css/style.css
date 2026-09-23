@@ -740,6 +740,63 @@ img {
 }
 
 /* --- Activities Section --- */
+/* --- Outreach Image Lightbox --- */
+
+#outreach .activity-media img {
+  cursor: zoom-in;
+}
+
+.image-lightbox {
+  padding: 0;
+  border: none;
+  background: transparent;
+  max-width: none;
+  max-height: none;
+  overflow: visible;
+}
+
+.image-lightbox::backdrop {
+  background: rgba(10, 18, 24, 0.88);
+  backdrop-filter: blur(3px);
+}
+
+.image-lightbox img {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: min(92vw, 1400px);
+  max-height: 88vh;
+  object-fit: contain;
+  border-radius: 6px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.45);
+}
+
+.image-lightbox-close {
+  position: fixed;
+  top: 18px;
+  right: 24px;
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.14);
+  color: #fff;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  z-index: 1;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.image-lightbox-close:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.05);
+}
+
+body.lightbox-open {
+  overflow: hidden;
+}
+
 .activities-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
