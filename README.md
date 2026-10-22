@@ -37,8 +37,7 @@ My current research interests particularly center on **mineralization-related st
 .
 ├── index.html
 ├── css/
-│   ├── style.css
-│   └── web2.css
+│   └── style.css
 ├── assets/
 │   ├── images/
 │   └── papers/
